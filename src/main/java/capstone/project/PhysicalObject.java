@@ -1,77 +1,89 @@
 package capstone.project;
 
-import java.lang.Math; 
+import java.lang.Math;
 
 public class PhysicalObject {
-    double heightOfLauch; 
-    double angleOfLaunch; 
-    double initialVelocity; 
+    double heightOfLaunch;
+    double angleOfLaunch;
+    double initialVelocity;
 
-    public PhysicalObject(double heightOfLauch, double angleOfLaunch, double initialVelocity ) {
-        this.heightOfLauch = heightOfLauch;
-        this.angleOfLaunch = angleOfLaunch; 
-        this.initialVelocity = initialVelocity; 
+    public PhysicalObject(double heightOfLauch, double angleOfLaunch, double initialVelocity) {
+        this.heightOfLaunch = heightOfLauch;
+        this.angleOfLaunch = angleOfLaunch;
+        this.initialVelocity = initialVelocity;
     }
 
-    // method to find the max height of the object after the launch. 
-    public double getMaxHeight(){
+    // method to find the max height of the object after the launch.
+    public double getMaxHeight() {
 
         if (angleOfLaunch <= 0) {
-            return heightOfLauch; 
+            return heightOfLaunch;
         }
 
         // gravity of Earth = 9.807 m/s^2
-        double maxHeight = (Math.pow(getVerticalVelocityComponent(), 2) / 9.807) - 
-        (Math.pow(getVerticalVelocityComponent(), 2) / 9.807 / 2) + heightOfLauch; 
+        double maxHeight = (Math.pow(getVerticalVelocityComponent(), 2) / 9.81) -
+                (Math.pow(getVerticalVelocityComponent(), 2) / 9.81 / 2) + heightOfLaunch;
 
-        // rounding maxHeight to the thousandths place. 
-        return Math.round(maxHeight * 1000.0) / 1000.0;
+        System.out.println(Math.round(maxHeight * 100.0) / 100.0);
+
+        // rounding maxHeight to the thousandths place.
+        return Math.round(maxHeight * 100.0) / 100.0;
     }
 
     public double getTimeOfFlight() {
 
-        double time; 
-        time = (getVerticalVelocityComponent() + 
-        Math.pow(Math.pow(getVerticalVelocityComponent(), 2) - 2 * 9.807 * heightOfLauch, 0.5)) / 2;
+        double time = 0;
 
-        return Math.round(time * 1000.0) / 1000.0; 
+        System.out.println("velocity component:" + getVerticalVelocityComponent());
+        System.out.println("Viy ^2:" + Math.pow(getVerticalVelocityComponent(), 2));
+        System.out.println("Viy ^2:" + Math.pow(getVerticalVelocityComponent(), 2));
+        System.out.println("4ac:" + (2 * 9.81 * heightOfLaunch));
+        System.out.println("value under sqr:"
+                + Math.pow(Math.pow(getVerticalVelocityComponent(), 2) + (2 * 9.81 * heightOfLaunch), 0.5));
+
+        double verticalVelocitySquared = Math.pow(getVerticalVelocityComponent(), 2);
+
+        // using quadratic formula to calculate time from the change in y formula
+        time = (getVerticalVelocityComponent() +
+                Math.pow(verticalVelocitySquared + (2 * 9.81 * heightOfLaunch), 0.5)) / 9.81;
+        System.out.println(time);
+        return Math.round(time * 100.0) / 100.0;
+
     }
 
     public double getHorizontalDistanceTravelled() {
-        double horizontalDistance = 0; 
+        double horizontalDistance = 0;
 
         if (angleOfLaunch == 90 || angleOfLaunch == -90) {
-            return 0.0; 
+            return 0.0;
         }
 
-        if (heightOfLauch > 0) {
+        if (heightOfLaunch > 0) {
 
         }
 
-        return horizontalDistance; 
+        return horizontalDistance;
     }
 
-
-    
     // draw the object onto Java's JFrame
     public void show() {
-        SimpleDraw circle = new SimpleDraw(null); 
-        circle.showAnimation(); 
+        SimpleDraw circle = new SimpleDraw(null);
+        circle.showAnimation();
     }
 
-    // Helper function to find the horizontal velocity component of V initial. 
+    // Helper function to find the horizontal velocity component of V initial.
     public double getHorizontalVelocityComponent() {
         double radians = Math.toRadians(angleOfLaunch);
-        double horizontalVelocity = initialVelocity * Math.cos(radians); 
+        double horizontalVelocity = initialVelocity * Math.cos(radians);
 
-        return horizontalVelocity; 
+        return horizontalVelocity;
     }
 
-    // Helper function to find the vertical velocity component of V initial. 
+    // Helper function to find the vertical velocity component of V initial.
     public double getVerticalVelocityComponent() {
         double radians = Math.toRadians(angleOfLaunch);
-        double verticalVelocity = initialVelocity * Math.sin(radians); 
+        double verticalVelocity = initialVelocity * Math.sin(radians);
 
-        return verticalVelocity; 
+        return verticalVelocity;
     }
 }
