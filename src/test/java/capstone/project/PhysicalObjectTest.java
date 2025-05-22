@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class PhysicalObjectTest {
     /**
      * Rigorous Test :-)
      */
@@ -15,4 +15,14 @@ public class AppTest {
     public void shouldAnswerWithTrue() {
         assertTrue(true);
     }
+
+    public PhysicalObject createPhysicalObject() {
+        
+    }
+
+    @Test
+    public void TestGetTimeOfFlight() {
+
+    }
+
 }

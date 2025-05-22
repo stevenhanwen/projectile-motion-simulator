@@ -34,7 +34,7 @@ public class PhysicalObject {
         time = (getVerticalVelocityComponent() + 
         Math.pow(Math.pow(getVerticalVelocityComponent(), 2) - 2 * 9.807 * heightOfLauch, 0.5)) / 2;
 
-        return time; 
+        return Math.round(time * 1000.0) / 1000.0; 
     }
 
     public double getHorizontalDistanceTravelled() {
