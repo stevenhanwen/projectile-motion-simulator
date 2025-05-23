@@ -55,12 +55,10 @@ public class PhysicalObject {
         double horizontalDistance = 0;
 
         if (angleOfLaunch == 90 || angleOfLaunch == -90) {
-            return 0.0;
+            return horizontalDistance;
         }
 
-        if (heightOfLaunch > 0) {
-
-        }
+        horizontalDistance = getTimeOfFlight() * getHorizontalVelocityComponent();
 
         return horizontalDistance;
     }
