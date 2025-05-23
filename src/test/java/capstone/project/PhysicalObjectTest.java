@@ -47,7 +47,8 @@ public class PhysicalObjectTest {
 
         for (int i = 0; i < inputObjectParameters.length; i++) {
             
-            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0], inputObjectParameters[i][1], inputObjectParameters[i][2]);
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0], 
+            inputObjectParameters[i][1], inputObjectParameters[i][2]);
             assertEquals(expectedTimes[i], testObject.getTimeOfFlight());
         }
 
