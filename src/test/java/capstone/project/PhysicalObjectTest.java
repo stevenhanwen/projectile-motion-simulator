@@ -21,12 +21,60 @@ public class PhysicalObjectTest {
     }
 
     @Test
-    public void TestGetTimeOfFlight() {
+    public void TestGetMaxHeight() {
+        double[][] inputObjectParameters = {
+                // height, angle, initial velocity
+                { 0, 25, 10 },
+                { 10, 10, 20 },
+                { 5, 0, 15 },
+                // negative angle
+                { 5, -20, 15 },
+                // straight up
+                { 10, 90, 15 },
+        };
+
+        double[] expectedHeights = { 0.91, 10.61, 5, 5, 21.47 };
+
+        for (int i = 0; i < inputObjectParameters.length; i++) {
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
+                    inputObjectParameters[i][1], inputObjectParameters[i][2]);
+
+            assertEquals(expectedHeights[i], testObject.getMaxHeight());
+        }
+    }
+
+    @Test
+    public void TestGetHorizontalDistanceTravelled() {
+        double[][] inputObjectParameters = {
+                // height, angle, initial velocity
+                { 0, 25, 10 },
+                { 10, 10, 20 },
+                { 5, 0, 15 },
+                // negative angle
+                { 5, -20, 15 },
+                // straight up or down
+                { 10, 90, 15 },
+                { 5, -90, 15 }
+        };
+
+        double[] expectedDistances = { 7.81, 35.95, 15.14, 8.66, 0, 0 };
+
+        for (int i = 0; i < inputObjectParameters.length; i++) {
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
+                    inputObjectParameters[i][1], inputObjectParameters[i][2]);
+
+            assertEquals(expectedDistances[i], testObject.getHorizontalDistanceTravelled());
+        }
+
+    }
+
+    @Test
+    public void TestGetTimeOfFlightRounded() {
 
         // PhysicalObject[] arrayOfPhysicalObjects = {
-        //         createPhysicalObject(0, 25, 10),
-        //         createPhysicalObject(10, 10, 20),
-        //         createPhysicalObject(5, 0, 15)
+        // createPhysicalObject(0, 25, 10),
+        // createPhysicalObject(10, 10, 20),
+        // createPhysicalObject(5, 0, 15)
         // };
 
         double[][] inputObjectParameters = {
@@ -46,14 +94,14 @@ public class PhysicalObjectTest {
         };
 
         for (int i = 0; i < inputObjectParameters.length; i++) {
-            
-            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0], 
-            inputObjectParameters[i][1], inputObjectParameters[i][2]);
-            assertEquals(expectedTimes[i], testObject.getTimeOfFlight());
+
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
+                    inputObjectParameters[i][1], inputObjectParameters[i][2]);
+            assertEquals(expectedTimes[i], testObject.getTimeOfFlightRounded());
         }
 
         PhysicalObject testObject = createPhysicalObject(5, 20, 10);
-        double calculatedTime = testObject.getTimeOfFlight();
+        double calculatedTime = testObject.getTimeOfFlightRounded();
         double expectedTime = 1.42;
         assertEquals(expectedTime, calculatedTime);
 
