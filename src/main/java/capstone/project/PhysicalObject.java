@@ -33,22 +33,21 @@ public class PhysicalObject {
     public double getTimeOfFlight() {
 
         double time = 0;
-
-        System.out.println("velocity component:" + getVerticalVelocityComponent());
-        System.out.println("Viy ^2:" + Math.pow(getVerticalVelocityComponent(), 2));
-        System.out.println("Viy ^2:" + Math.pow(getVerticalVelocityComponent(), 2));
-        System.out.println("4ac:" + (2 * 9.81 * heightOfLaunch));
-        System.out.println("value under sqr:"
-                + Math.pow(Math.pow(getVerticalVelocityComponent(), 2) + (2 * 9.81 * heightOfLaunch), 0.5));
-
         double verticalVelocitySquared = Math.pow(getVerticalVelocityComponent(), 2);
 
         // using quadratic formula to calculate time from the change in y formula
         time = (getVerticalVelocityComponent() +
                 Math.pow(verticalVelocitySquared + (2 * 9.81 * heightOfLaunch), 0.5)) / 9.81;
         System.out.println(time);
-        return Math.round(time * 100.0) / 100.0;
+        
 
+        return time; 
+    }
+
+    // this method returns the time of flight but rounded 
+    // to the nearest hundreths. 
+    public double getTimeOfFlightRounded(){
+        return Math.round(getTimeOfFlight() * 100.0) / 100.0;
     }
 
     public double getHorizontalDistanceTravelled() {
@@ -60,7 +59,7 @@ public class PhysicalObject {
 
         horizontalDistance = getTimeOfFlight() * getHorizontalVelocityComponent();
 
-        return horizontalDistance;
+        return Math.round(horizontalDistance * 100.0) / 100.0;
     }
 
     // draw the object onto Java's JFrame
