@@ -8,9 +8,9 @@ public class Main
        
         PhysicalObject testObject = new PhysicalObject(5, -20, 10); 
         // System.out.println(testObject.getMaxHeight());
-        System.out.println("calculated time of flight is: " + testObject.getTimeOfFlight());
+        // System.out.println("calculated time of flight is: " + testObject.getTimeOfFlight());
 
-        // testObject.show();
+         testObject.show();
     }               
 
 
