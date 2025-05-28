@@ -65,7 +65,7 @@ public class PhysicalObject {
     // draw the object onto Java's JFrame
     public void show() {
         SimpleDraw circle = new SimpleDraw(null);
-        circle.showAnimation();
+        circle.showAnimation(this);
     }
 
     // Helper function to find the horizontal velocity component of V initial.

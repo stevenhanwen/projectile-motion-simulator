@@ -3,25 +3,29 @@ package capstone.project;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.lang.Math; 
 
 public class DrawGraphics {
 
     ArrayList<Mover> movers = new ArrayList<>();
-    BouncerOrStraightMover straightMovingSprite1;
-    BouncerOrStraightMover straightMovingSprite2;
+    BouncerOrStraightMover spriteOfLaunchPlatform;
     BouncerOrStraightMover movingSprite1;
     BouncerOrStraightMover movingSprite2;
 
     /**
      * Initializes this class for drawing.
      * The JFrame is 1500 in width and 800 in height
-     * We will draw shapes onto the JFrame with 1 meter = 30 pixels
+     * We will draw shapes onto the JFrame with 1 meter = 20 pixels
      */
-    public DrawGraphics() {
-        Rectangle launchPlatform = new Rectangle(100, 50, Color.RED);
-        straightMovingSprite1 = new BouncerOrStraightMover(0, 750, straightBox1, false);
-        straightMovingSprite1.setMovementVector(0, 0);
-        movers.add(straightMovingSprite1);
+    public DrawGraphics(PhysicalObject projectile) {
+
+        // the width of the platform will always stay 100 pixels
+        // the height will depend on the height of the launch
+        // have to round to nearest int, because pixels are in integers
+        Rectangle launchPlatform = new Rectangle(100, (int) Math.round(projectile.heightOfLaunch * 20), Color.RED);
+        spriteOfLaunchPlatform = new BouncerOrStraightMover(0, 800 - (int) Math.round(projectile.heightOfLaunch * 20), launchPlatform, false);
+        spriteOfLaunchPlatform.setMovementVector(0, 0);
+        movers.add(spriteOfLaunchPlatform);
 
         // Oval straightOval1 = new Oval(50, 80, Color.BLUE);
         // straightMovingSprite2 = new BouncerOrStraightMover(10, 50, straightOval1,
