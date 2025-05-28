@@ -62,8 +62,8 @@ public class SimpleDraw extends JPanel implements Runnable {
         }
     }
 
-    public void showAnimation() {
-        final SimpleDraw content = new SimpleDraw(new DrawGraphics());
+    public void showAnimation(PhysicalObject obj) {
+        final SimpleDraw content = new SimpleDraw(new DrawGraphics(obj));
 
         JFrame frame = new JFrame("Graphics!");
         Color bgColor = Color.white;
