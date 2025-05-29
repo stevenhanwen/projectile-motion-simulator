@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 public class Oval implements Sprite {
     private int width;
     private int height;
-    private Color color;
+    private Color color; 
 
     /**
      * Constructor for oval sprite

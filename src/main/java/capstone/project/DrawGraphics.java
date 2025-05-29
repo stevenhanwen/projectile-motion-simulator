@@ -3,14 +3,14 @@ package capstone.project;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.lang.Math; 
+import java.lang.Math;
 
 public class DrawGraphics {
 
     ArrayList<Mover> movers = new ArrayList<>();
-    BouncerOrStraightMover spriteOfLaunchPlatform;
-    BouncerOrStraightMover movingSprite1;
-    BouncerOrStraightMover movingSprite2;
+    BouncerOrProjectileMover spriteOfLaunchPlatform;
+    BouncerOrProjectileMover spriteOfProjectileBall;
+    BouncerOrProjectileMover movingSprite2;
 
     /**
      * Initializes this class for drawing.
@@ -23,15 +23,18 @@ public class DrawGraphics {
         // the height will depend on the height of the launch
         // have to round to nearest int, because pixels are in integers
         Rectangle launchPlatform = new Rectangle(100, (int) Math.round(projectile.heightOfLaunch * 20), Color.RED);
-        spriteOfLaunchPlatform = new BouncerOrStraightMover(0, 800 - (int) Math.round(projectile.heightOfLaunch * 20), launchPlatform, false);
-        spriteOfLaunchPlatform.setMovementVector(0, 0);
+        spriteOfLaunchPlatform = new BouncerOrProjectileMover(0, 800 - (int) Math.round(projectile.heightOfLaunch * 20),
+                launchPlatform, false, projectile);
+        //spriteOfLaunchPlatform.setMovementVector(0, 0);
         movers.add(spriteOfLaunchPlatform);
 
-        // Oval straightOval1 = new Oval(50, 80, Color.BLUE);
-        // straightMovingSprite2 = new BouncerOrStraightMover(10, 50, straightOval1,
-        // false);
-        // straightMovingSprite2.setMovementVector(3, 2);
-        // movers.add(straightMovingSprite2);
+
+        // centering the projectile to the center of the launch platform
+        Oval projectileBall = new Oval(35, 35, Color.BLUE);
+        spriteOfProjectileBall = new BouncerOrProjectileMover(35, 765 - (int) Math.round(projectile.heightOfLaunch * 20),
+                projectileBall, true, projectile);
+        //spriteOfProjectileBall.setMovementVector(0, 0);
+        movers.add(spriteOfProjectileBall);
 
         // Rectangle box1 = new Rectangle(15, 20, Color.MAGENTA);
         // movingSprite1 = new BouncerOrStraightMover(50, 170, box1, true);
