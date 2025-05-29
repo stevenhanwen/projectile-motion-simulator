@@ -5,13 +5,14 @@ import java.lang.Math;
 public class PhysicalObject {
     double heightOfLaunch;
     double angleOfLaunch;
-    double angleofLaunchRadians = Math.toRadians(angleOfLaunch); 
+    double angleofLaunchRadians; 
     double initialVelocity;
 
     public PhysicalObject(double heightOfLauch, double angleOfLaunch, double initialVelocity) {
         this.heightOfLaunch = heightOfLauch;
         this.angleOfLaunch = angleOfLaunch;
         this.initialVelocity = initialVelocity;
+        angleofLaunchRadians = Math.toRadians(angleOfLaunch); 
     }
 
     // method to find the max height of the object after the launch.

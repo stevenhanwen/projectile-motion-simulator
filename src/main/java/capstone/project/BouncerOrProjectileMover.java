@@ -56,6 +56,7 @@ public class BouncerOrProjectileMover implements Mover {
         // Assuming initialY is set when the ball is first launched
         double vy = motionParameters.getVerticalVelocityComponent();
         double displacement = vy * time - 0.5 * 9.81 * time * time; // meters
+        // System.out.println("the current displacement is: " + displacement + "and vy is: " + vy); 
 
         y = (int) Math.round(startY - displacement * 20);
 

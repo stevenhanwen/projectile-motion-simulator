@@ -10,7 +10,6 @@ public class DrawGraphics {
     ArrayList<Mover> movers = new ArrayList<>();
     BouncerOrProjectileMover spriteOfLaunchPlatform;
     BouncerOrProjectileMover spriteOfProjectileBall;
-    BouncerOrProjectileMover movingSprite2;
 
     /**
      * Initializes this class for drawing.
