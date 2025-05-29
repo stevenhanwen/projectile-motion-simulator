@@ -5,6 +5,7 @@ import java.lang.Math;
 public class PhysicalObject {
     double heightOfLaunch;
     double angleOfLaunch;
+    double angleofLaunchRadians = Math.toRadians(angleOfLaunch); 
     double initialVelocity;
 
     public PhysicalObject(double heightOfLauch, double angleOfLaunch, double initialVelocity) {
@@ -64,22 +65,20 @@ public class PhysicalObject {
 
     // draw the object onto Java's JFrame
     public void show() {
-        SimpleDraw circle = new SimpleDraw(null);
-        circle.showAnimation(this);
+        SimpleDraw animation = new SimpleDraw(null);
+        animation.showAnimation(this);
     }
 
     // Helper function to find the horizontal velocity component of V initial.
     public double getHorizontalVelocityComponent() {
-        double radians = Math.toRadians(angleOfLaunch);
-        double horizontalVelocity = initialVelocity * Math.cos(radians);
+        double horizontalVelocity = initialVelocity * Math.cos(angleofLaunchRadians);
 
         return horizontalVelocity;
     }
 
     // Helper function to find the vertical velocity component of V initial.
     public double getVerticalVelocityComponent() {
-        double radians = Math.toRadians(angleOfLaunch);
-        double verticalVelocity = initialVelocity * Math.sin(radians);
+        double verticalVelocity = initialVelocity * Math.sin(angleofLaunchRadians);
 
         return verticalVelocity;
     }
