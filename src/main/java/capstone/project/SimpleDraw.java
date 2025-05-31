@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 /** Displays a window and delegates drawing to DrawGraphics. */
 public class SimpleDraw extends JPanel implements Runnable {
@@ -89,6 +90,20 @@ public class SimpleDraw extends JPanel implements Runnable {
                 content.stop();
             }
         });
+
+        // Create a label with text
+        JLabel heightLabel = new JLabel("Max Height: " + (double) Math.round(obj.getMaxHeight() * 100) / 100 + " meters");
+        JLabel timeLabel = new JLabel("Time of Flight: " + (double) Math.round(obj.getTimeOfFlight() * 100) / 100 + " seconds");
+        // Add the label to the frame
+        frame.add(heightLabel);
+        frame.add(timeLabel); 
+        // Set default close operation
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Set the layout to null if you're positioning manually (optional)
+        frame.setLayout(null);
+        // If using null layout, set bounds for the label
+        heightLabel.setBounds(700, (825 - (int) Math.round(obj.getMaxHeight() * 20)), 200, 30);
+        timeLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 730, 200, 30);
 
         new Thread(content).start();
 
