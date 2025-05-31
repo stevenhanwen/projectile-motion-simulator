@@ -2,7 +2,7 @@ package capstone.project;
 
 import java.awt.Graphics;
 
-public class BouncerOrProjectileMover implements Mover {
+public class ProjectileMover implements Mover {
     private int x;
     private int y;
     private int startY; 
@@ -17,7 +17,7 @@ public class BouncerOrProjectileMover implements Mover {
     /**
      * Create a BouncerOrProjectileMover that positions sprite at (startX, startY).
      */
-    public BouncerOrProjectileMover(int startX, int startY, Sprite sprite, boolean isMoving, PhysicalObject projec) {
+    public ProjectileMover(int startX, int startY, Sprite sprite, boolean isMoving, PhysicalObject projec) {
         x = startX;
         y = startY;
         this.startY = startY; 
