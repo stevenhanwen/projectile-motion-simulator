@@ -21,6 +21,11 @@ public class PhysicalObjectTest {
     }
 
     @Test
+    public void TestGetFinalSpeed(){
+        
+    }
+
+    @Test
     public void TestGetMaxHeight() {
         double[][] inputObjectParameters = {
                 // height, angle, initial velocity
