@@ -64,11 +64,28 @@ public class PhysicalObject {
         return Math.round(horizontalDistance * 100.0) / 100.0;
     }
 
-    // draw the object onto Java's JFrame
-    public void show() {
-        SimpleDraw animation = new SimpleDraw(null);
-        animation.showAnimation(this);
+    public double getFinalSpeed() {
+        // |v| = (vx + vy) ^ 1/2
+        double speedSquared = getFinalVerticalVelocity() * getFinalVerticalVelocity() + getHorizontalVelocityComponent() * getHorizontalVelocityComponent();  
+        return Math.pow(speedSquared, 0.5); 
+
     }
+
+    public double getFinalVerticalVelocity(){
+        // vf = vi + at
+        double vy = getVerticalVelocityComponent()  - 9.81 * getTimeOfFlight();
+        return vy; 
+    }
+
+    public double getAngleOfFinalVelocity() {
+        // Computes the arctangent of y/x, but also considers the signs of x and y 
+        // to determine the correct quadrant.
+
+        double angle = Math.atan2(getFinalVerticalVelocity(), getHorizontalVelocityComponent()); 
+        return angle; 
+    }
+
+
 
     // Helper function to find the horizontal velocity component of V initial.
     public double getHorizontalVelocityComponent() {
@@ -83,4 +100,12 @@ public class PhysicalObject {
 
         return verticalVelocity;
     }
+
+    // draw the object onto Java's JFrame
+    public void show() {
+        SimpleDraw animation = new SimpleDraw(null);
+        animation.showAnimation(this);
+    }
+
+    
 }
