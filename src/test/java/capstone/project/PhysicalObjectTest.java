@@ -21,8 +21,51 @@ public class PhysicalObjectTest {
     }
 
     @Test
-    public void TestGetFinalSpeed(){
-        
+    public void TestGetAngleOfFinalVelocityRounded() {
+        double[][] inputObjectParameters = {
+                // height, angle, initial velocity
+                { 0, 25, 10 },
+                { 10, 10, 20 },
+                { 5, 0, 15 },
+                // negative angle
+                { 5, -20, 15 },
+                // straight up
+                { 10, 90, 15 },
+        };
+
+        double[] expectedFinalAngles = { -25.0, -36.88, -33.15, -38.24, -90.0};
+
+        for (int i = 0; i < inputObjectParameters.length; i++) {
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
+                    inputObjectParameters[i][1], inputObjectParameters[i][2]);
+
+            assertEquals(expectedFinalAngles[i], testObject.getAngleOfFinalVelocityRounded());
+        }
+
+    }
+
+    @Test
+    public void TestGetFinalSpeed() {
+        double[][] inputObjectParameters = {
+                // height, angle, initial velocity
+                { 0, 25, 10 },
+                { 10, 10, 20 },
+                { 5, 0, 15 },
+                // negative angle
+                { 5, -20, 15 },
+                // straight up
+                { 10, 90, 15 },
+        };
+
+        double[] expectedFinalSpeeds = { 10, 24.42, 17.97, 17.97, 20.52 };
+
+        for (int i = 0; i < inputObjectParameters.length; i++) {
+            PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
+                    inputObjectParameters[i][1], inputObjectParameters[i][2]);
+
+            assertEquals(expectedFinalSpeeds[i], testObject.getFinalSpeedRounded());
+        }
+
     }
 
     @Test

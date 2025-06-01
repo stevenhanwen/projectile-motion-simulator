@@ -64,11 +64,16 @@ public class PhysicalObject {
         return Math.round(horizontalDistance * 100.0) / 100.0;
     }
 
-    public double getFinalSpeed() {
+    public double getFinalSpeedRounded() {
         // |v| = (vx + vy) ^ 1/2
-        double speedSquared = getFinalVerticalVelocity() * getFinalVerticalVelocity() + getHorizontalVelocityComponent() * getHorizontalVelocityComponent();  
-        return Math.pow(speedSquared, 0.5); 
+        double speedSquared = getFinalVerticalVelocity() * getFinalVerticalVelocity() 
+        + getHorizontalVelocityComponent() * getHorizontalVelocityComponent();  
 
+        // rounding to the nearest hundreths
+        // have to use 100.0 because if both operands are integers → Integer Division
+        System.out.println("before rounding: " + Math.pow(speedSquared, 0.5) * 100);
+        double speedBeforeRounding = Math.pow(speedSquared, 0.5); 
+        return Math.round(speedBeforeRounding * 100) / 100.0; 
     }
 
     public double getFinalVerticalVelocity(){
@@ -77,12 +82,12 @@ public class PhysicalObject {
         return vy; 
     }
 
-    public double getAngleOfFinalVelocity() {
+    public double getAngleOfFinalVelocityRounded() {
         // Computes the arctangent of y/x, but also considers the signs of x and y 
         // to determine the correct quadrant.
 
         double angle = Math.atan2(getFinalVerticalVelocity(), getHorizontalVelocityComponent()); 
-        return angle; 
+        return Math.round(Math.toDegrees(angle) * 100) / 100.0; 
     }
 
 
