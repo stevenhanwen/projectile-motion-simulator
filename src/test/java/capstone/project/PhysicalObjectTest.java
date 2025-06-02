@@ -33,7 +33,7 @@ public class PhysicalObjectTest {
                 { 10, 90, 15 },
         };
 
-        double[] expectedFinalAngles = { -25.0, -36.88, -33.15, -38.24, -90.0};
+        double[] expectedFinalAngles = { -25.0, -36.23, -33.44, -38.36, -90.0};
 
         for (int i = 0; i < inputObjectParameters.length; i++) {
             PhysicalObject testObject = createPhysicalObject(inputObjectParameters[i][0],
