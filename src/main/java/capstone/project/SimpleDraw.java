@@ -11,6 +11,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.*;
 
 /** Displays a window and delegates drawing to DrawGraphics. */
 public class SimpleDraw extends JPanel implements Runnable {
@@ -92,18 +94,37 @@ public class SimpleDraw extends JPanel implements Runnable {
         });
 
         // Create a label with text
-        JLabel heightLabel = new JLabel("Max Height: " + (double) Math.round(obj.getMaxHeight() * 100) / 100 + " meters");
-        JLabel timeLabel = new JLabel("Time of Flight: " + (double) Math.round(obj.getTimeOfFlight() * 100) / 100 + " seconds");
+        JLabel heightLabel = new JLabel(
+                "Max Height: " + (double) Math.round(obj.getMaxHeight() * 100) / 100 + " meters");
+        JLabel timeLabel = new JLabel(
+                "Time of Flight: " + (double) Math.round(obj.getTimeOfFlight() * 100) / 100 + " seconds");
+        JLabel finalVelocityLabel = new JLabel("Speed and Angle: "
+                + obj.getFinalSpeedRounded() + " seconds and " 
+                + obj.getAngleOfFinalVelocityRounded() + " degrees from the X axis (ground)");
+        JLabel launchPlatformLabel = new JLabel ("Launch Platform"); 
+
+        // Increase the font of the text
+        heightLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
+        timeLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
+        finalVelocityLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
+        launchPlatformLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
+
         // Add the label to the frame
         frame.add(heightLabel);
-        frame.add(timeLabel); 
+        frame.add(timeLabel);
+        frame.add(finalVelocityLabel); 
+        frame.add(launchPlatformLabel); 
+
         // Set default close operation
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Set the layout to null if you're positioning manually (optional)
         frame.setLayout(null);
+
         // If using null layout, set bounds for the label
-        heightLabel.setBounds(700, (825 - (int) Math.round(obj.getMaxHeight() * 20)), 200, 30);
-        timeLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 730, 200, 30);
+        heightLabel.setBounds(700, 820 - (int) Math.round(obj.getMaxHeight() * 20), 500, 30);
+        timeLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 700, 500, 30);
+        finalVelocityLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20) - 100, 730, 800, 30); 
+        launchPlatformLabel.setBounds(0, 730 - (int) Math.round(obj.heightOfLaunch) * 20, 500, 30);
 
         new Thread(content).start();
 
