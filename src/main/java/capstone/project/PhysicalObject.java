@@ -26,8 +26,6 @@ public class PhysicalObject {
         double maxHeight = (Math.pow(getVerticalVelocityComponent(), 2) / 9.81) -
                 (Math.pow(getVerticalVelocityComponent(), 2) / 9.81 / 2) + heightOfLaunch;
 
-        System.out.println(Math.round(maxHeight * 100.0) / 100.0);
-
         // rounding maxHeight to the thousandths place.
         return Math.round(maxHeight * 100.0) / 100.0;
     }
@@ -40,9 +38,7 @@ public class PhysicalObject {
         // using quadratic formula to calculate time from the change in y formula
         time = (getVerticalVelocityComponent() +
                 Math.pow(verticalVelocitySquared + (2 * 9.81 * heightOfLaunch), 0.5)) / 9.81;
-        System.out.println(time);
         
-
         return time; 
     }
 
@@ -71,7 +67,6 @@ public class PhysicalObject {
 
         // rounding to the nearest hundreths
         // have to use 100.0 because if both operands are integers → Integer Division
-        System.out.println("before rounding: " + Math.pow(speedSquared, 0.5) * 100);
         double speedBeforeRounding = Math.pow(speedSquared, 0.5); 
         return Math.round(speedBeforeRounding * 100) / 100.0; 
     }
@@ -95,7 +90,6 @@ public class PhysicalObject {
     // Helper function to find the horizontal velocity component of V initial.
     public double getHorizontalVelocityComponent() {
         double horizontalVelocity = initialVelocity * Math.cos(angleofLaunchRadians);
-
         return horizontalVelocity;
     }
 
