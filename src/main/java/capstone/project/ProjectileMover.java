@@ -26,11 +26,6 @@ public class ProjectileMover implements Mover {
         this.motionParameters = projec;
     }
 
-    /** Starts moving the object in the direction (xIncrement, yIncrement). */
-    // public void setMovementVector(int xIncrement, int yIncrement) {
-    // xDirection = xIncrement;
-    // yDirection = yIncrement;
-    // }
 
     /** Draws the sprite at its current position on to surface. */
     @Override

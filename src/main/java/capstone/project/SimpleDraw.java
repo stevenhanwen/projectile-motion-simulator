@@ -122,7 +122,7 @@ public class SimpleDraw extends JPanel implements Runnable {
         // If using null layout, set bounds for the label
         heightLabel.setBounds(700, 820 - (int) Math.round(obj.getMaxHeight() * 20), 500, 30);
         timeLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 700, 500, 30);
-        finalVelocityLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 730, 800, 30); 
+        finalVelocityLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20) - 100, 730, 800, 30); 
         launchPlatformLabel.setBounds(0, 730 - (int) Math.round(obj.heightOfLaunch) * 20, 500, 30);
 
         new Thread(content).start();

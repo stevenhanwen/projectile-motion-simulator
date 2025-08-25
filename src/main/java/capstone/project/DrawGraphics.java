@@ -41,16 +41,6 @@ public class DrawGraphics {
                 false, projectile);
         movers.add(spriteOfMaxHeightLine);
 
-        // Rectangle box1 = new Rectangle(15, 20, Color.MAGENTA);
-        // movingSprite1 = new BouncerOrStraightMover(50, 170, box1, true);
-        // movingSprite1.setMovementVector(2, 1);
-        // movers.add(movingSprite1);
-
-        // Oval oval1 = new Oval(40, 80, Color.YELLOW);
-        // movingSprite2 = new BouncerOrStraightMover(10, 20, oval1, true);
-        // movingSprite2.setMovementVector(3, 2);
-        // movers.add(movingSprite2);
-
     }
 
     /** Draw the contents of the window on surface. */
