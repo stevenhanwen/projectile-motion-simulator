@@ -101,18 +101,22 @@ public class SimpleDraw extends JPanel implements Runnable {
                 + obj.getFinalSpeedRounded() + " m/s and " 
                 + obj.getAngleOfFinalVelocityRounded() + " degrees from the X axis (ground)");
         JLabel launchPlatformLabel = new JLabel ("Launch Platform"); 
+        JLabel horizontalDistancLabel = new JLabel("Distance from launch is " 
+            + obj.getHorizontalDistanceTravelled() + "m");
 
         // Increase the font of the text
         heightLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
         timeLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
         finalVelocityLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
         launchPlatformLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
+        horizontalDistancLabel.setFont(new Font("SansSerif", Font.BOLD, 14)); 
 
         // Add the label to the frame
         frame.add(heightLabel);
         frame.add(timeLabel);
         frame.add(finalVelocityLabel); 
         frame.add(launchPlatformLabel); 
+        frame.add(horizontalDistancLabel);
 
         // Set default close operation
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,6 +124,7 @@ public class SimpleDraw extends JPanel implements Runnable {
         frame.setLayout(null);
 
         // If using null layout, set bounds for the label
+        horizontalDistancLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 670, 500, 30);
         heightLabel.setBounds(700, 820 - (int) Math.round(obj.getMaxHeight() * 20), 500, 30);
         timeLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20), 700, 500, 30);
         finalVelocityLabel.setBounds((int) Math.round(obj.getHorizontalDistanceTravelled() * 20) - 100, 730, 800, 30); 

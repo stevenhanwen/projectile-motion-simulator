@@ -29,3 +29,5 @@ This simulator allows users to model projectile motion by entering initial launc
 - Limited to 2D motion (no lateral wind)
 
 **Note**: All calculations use SI units (meters, seconds, m/s).
+
+<img src="./document/projectile-motion-image.png" alt="drawing" width="700"/>
