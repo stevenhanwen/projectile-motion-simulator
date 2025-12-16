@@ -25,8 +25,7 @@ This simulator allows users to model projectile motion by entering initial launc
 
 - Does not account for air resistance
 - Assumes constant gravity (9.81 m/s²)
-- No collision detection with terrain
-- Limited to 2D motion (no lateral wind)
+- Screen does not move with the ball if trajectory is far
 
 **Note**: All calculations use SI units (meters, seconds, m/s).
 
